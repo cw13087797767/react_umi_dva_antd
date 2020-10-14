@@ -7,9 +7,13 @@ const config: IConfig =  {
     {
       path: '/',
       component: '../layouts/index',
-      routes: [
-        { path: '/', component: '../pages/index' }
-      ]
+      // routes: [
+      //   { path: '/', component: '../pages/index' }
+      // ]
+    },
+    {
+      path:'/login',
+      component:'../pages/login'
     }
   ],
   plugins: [
