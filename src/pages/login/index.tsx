@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva'
 import style from './index.less'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
+import { router } from 'umi'
 
 const Login: React.FC = (props:any) => {
     const { form, dispatch } = props
@@ -23,11 +24,11 @@ const Login: React.FC = (props:any) => {
                 payload:params,
                 callback: (data:any) => {
                     message.success("登陆成功！")
+                    router.replace("/")
                 }
             })
         })
     }
-
 
     return(
         <div className={ style.bgImg }>
@@ -74,9 +75,7 @@ const Login: React.FC = (props:any) => {
     )
 }
 
-export default  connect(({ user, loading }) => ({
+export default  connect(({ user, loading }:any) => ({
     userInfo:user.userInfo,
     loginLoading:loading.effects['user/userLogin']
 }))(Form.create()(Login))
-
-// export default Form.create()(Login)

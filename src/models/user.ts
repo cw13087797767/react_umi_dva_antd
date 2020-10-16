@@ -22,7 +22,7 @@ export default {
     },
     
     effects: {
-        *userLogin({ payload, callback }, { call, put }) {
+        *userLogin({ payload, callback }:any, { call, put }:any) {
             const response = yield call(userLogin,payload)
             if (response && response.code === '1') {
                 const res = response.data
