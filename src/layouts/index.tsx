@@ -3,6 +3,7 @@ import styles from './index.less';
 import { Layout, Icon } from 'antd';
 const { Header, Sider, Content } = Layout;
 import MenuComp from '@/components/menu';
+import menuConfigData from '@/globalConfig/menu'
 
 const BasicLayout: React.FC = (props:any) => {
 
@@ -13,62 +14,15 @@ const BasicLayout: React.FC = (props:any) => {
 
   const [collapsed, setCollapsed] = useState(false)
   const [menuData, setMenuData] = useState<any[]>([])
-  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState(['100'])
-  const [defaultOpenKeys, setDefaultOpenKeys] = useState(['3'])
+  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState(['A1'])
+  const [defaultOpenKeys, setDefaultOpenKeys] = useState(['A'])
 
   const toggle = () => {
     setCollapsed(!collapsed)
   }
 
   const getMenuData = () => {
-    let menu:any[] = [
-      {
-        label:'菜单1',
-        child:null,
-        route:'/route1',
-        id:1
-      },
-      {
-        label:'菜单2',
-        child:null,
-        route:'/route2',
-        id:2
-      },
-      {
-        label:'菜单3',
-        child:[
-          {
-            label:'子菜单1',
-            id:100,
-            route:'/route3',
-          },
-          {
-            label:'子菜单2',
-            id:101,
-            route:'/route4',
-          },
-          {
-            label:'子菜单3',
-            route:'/route5',
-            id:102
-          },
-        ],
-        id:3
-      },
-      {
-        label:'菜单4',
-        child:null,
-        id:4,
-        route:'/route6',
-      },
-      {
-        label:'测试菜单',
-        child:null,
-        id:5,
-        route:'/test',
-      },
-    ]
-    setMenuData(menu)
+    setMenuData(menuConfigData)
   }
 
   useEffect(() => {
@@ -80,6 +34,9 @@ const BasicLayout: React.FC = (props:any) => {
     defaultSelectedKeys,
     defaultOpenKeys,
     location
+  }
+  if (['/login','/404'].includes(location.pathname)) {
+    return children
   }
 
   return (

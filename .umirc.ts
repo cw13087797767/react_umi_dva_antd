@@ -9,18 +9,41 @@ const config: IConfig =  {
       component: '../layouts/index',
       routes: [
         {
+          path:'/login',
+          component:'../pages/login'
+        },
+        {
           path: '/', 
           component: '../pages/index' 
         },
         {
           path:'/test',
-          component:'../pages/test'
+          component:'../pages/test',
+        },
+        {
+          path:'/404',
+          component:'../pages/404'
+        },
+        {
+          path:'/ydzy/allChress',
+          component:'../pages/ydzy/allChress'
+        },
+        {
+          path:'/ydzy/allJob',
+          component:"../pages/ydzy/allJob"
+        },
+        {
+          path:'/ydzy/allEquip',
+          component:'../pages/ydzy/allEquip'
+        },
+        {
+          path:'/ydzy/allRace',
+          component:'../pages/ydzy/allRace'
+        },
+        {
+          component:'../pages/404',
         }
       ]
-    },
-    {
-      path:'/login',
-      component:'../pages/login'
     }
   ],
   plugins: [
@@ -43,6 +66,11 @@ const config: IConfig =  {
       },
     }],
   ],
+  proxy:{
+    "/images/lol/act": {
+      target: 'http://game.gtimg.cn'
+    }
+  }
 }
 
 export default config;
